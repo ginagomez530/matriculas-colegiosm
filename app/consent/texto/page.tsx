@@ -8,8 +8,7 @@ export default function ConsentTextPage() {
     (async () => {
       const md = await fetch('/consent/consentimiento_colombia.md').then(r => r.text());
       const { marked } = await import('marked');
-      // marked puede retornar string o Promise<string> → esperamos siempre
-      const rendered = await marked(md);
+      const rendered = await marked(md); // puede ser string o Promise<string>
       setHtml(String(rendered));
     })();
   }, []);
